@@ -5,8 +5,8 @@
 import sys
 import json
 import os.path
-import requests
 import datetime
+import requests
 import dumpconfig as cfg
 
 URL = 'http://%s:%s/api/statistics/data/export.csv' % (cfg.OPENCAST['host'], cfg.OPENCAST['port'])
@@ -63,7 +63,8 @@ def merge_pages():
     reading = True
     offset = 0
     while reading:
-        path = 'part-%s-limit-%d-offset-%d.csv' % (cfg.APP['fileprefix'], int(cfg.APP['limit']), offset)
+        path = 'part-%s-limit-%d-offset-%d.csv' % (cfg.APP['fileprefix'],
+                                                   int(cfg.APP['limit']), offset)
         if os.path.exists(path):
             print 'Found part file: %s' % (path)
             part_file = open(path, "r")
