@@ -82,7 +82,6 @@ def main():
             cfg = json.load(read_file)
             cfg['url'] = 'http://%s:%s/api/statistics/data/export.csv' % (cfg['host'], cfg['port'])
             cfg['auth'] = (cfg['user'], cfg['password'])
-            print cfg
     else:
         print('No config given. Run command as:')
         print('$ python2 %s config.json' % (sys.argv[0]))
