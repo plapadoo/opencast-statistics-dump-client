@@ -6,6 +6,7 @@ import sys
 import json
 import os.path
 import requests
+import datetime
 import dumpconfig as cfg
 
 URL = 'http://%s:%s/api/statistics/data/export.csv' % (cfg.OPENCAST['host'], cfg.OPENCAST['port'])
@@ -44,11 +45,35 @@ def get_csv_data(offset):
 def write_page(page, offset):
     """Write page of csv data to file."""
     path = 'part-%s-limit-%d-offset-%d.csv' % (cfg.APP['fileprefix'], int(cfg.APP['limit']), offset)
-    os.path.exists
+    if os.path.exists(path):
+        print 'File already exists: %s' % (path)
+        sys.exit(1)
     print 'Writing to %s.' % (path)
     part_file = open(path, "w")
     part_file.write(page)
     part_file.close()
+
+def merge_pages():
+    """Merge all found parts into one file."""
+    path = '%s-%s.csv' % (cfg.APP['fileprefix'], datetime.date.today())
+    if os.path.exists(path):
+        print 'File already exists: %s' % (path)
+        sys.exit(1)
+    complete_file = open(path, "w")
+    reading = True
+    offset = 0
+    while reading:
+        path = 'part-%s-limit-%d-offset-%d.csv' % (cfg.APP['fileprefix'], int(cfg.APP['limit']), offset)
+        if os.path.exists(path):
+            print 'Found part file: %s' % (path)
+            part_file = open(path, "r")
+            complete_file.write(part_file.read())
+            part_file.close()
+            offset = offset + 1
+        else:
+            complete_file.close()
+            reading = False
+            print 'End of merge.'
 
 def main():
     """Reads pages from endpoint until no more data is received."""
@@ -62,6 +87,7 @@ def main():
         else:
             write_page(page, offset)
             offset = offset + 1
+    merge_pages()
 
 if __name__ == "__main__":
     main()
