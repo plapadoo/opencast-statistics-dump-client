@@ -4,6 +4,7 @@
 
 import sys
 import json
+import time
 import os.path
 import datetime
 import requests
@@ -88,6 +89,7 @@ def main():
         else:
             write_page(page, offset)
             offset = offset + 1
+        time.sleep(int(cfg.APP['sleep']))
     merge_pages()
 
 if __name__ == "__main__":

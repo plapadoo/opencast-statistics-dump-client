@@ -2,6 +2,7 @@
 
 APP = {
     'limit': '2',
+    'sleep': '1',
     'fileprefix': 'fall1',
     }
 OPENCAST = {
