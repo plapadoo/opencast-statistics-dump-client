@@ -14,7 +14,7 @@ def get_csv_data(cfg, offset):
     """Return one page of csv data fetched from opencast csv statistics dump."""
     data = {
         'offset': offset,
-        'filter': '',
+        'filter': cfg['limit'],
         'limit': cfg['limit'],
         'data': json.dumps({
             'parameters': {
