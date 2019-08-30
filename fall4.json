@@ -1,0 +1,19 @@
+{
+    "description": "4. Jahresstatistik: Zahlen aller Serien für einen definierten Zeitraum. Der grosse Dump aus der neuen Funktion, der nur eine Eingrenzung über den Zeitraum benötigt.",
+    "limit": "10",
+    "sleep": "0.5",
+    "fileprefix": "fall4",
+    "host": "localhost",
+    "port": "8080",
+    "user": "admin",
+    "password": "opencast",
+    "organization": "mh_default_org",
+    "resourceId": "mh_default_org",
+    "detailLevel": "SERIES",
+    "from": "2018-12-31T23:00:00.000Z",
+    "to": "2019-12-31T22:59:59.999Z",
+    "dataResolution": "YEARLY",
+    "identifier": "organization.views.sum.influx",
+    "resourceType": "organization",
+    "filter": ""
+}

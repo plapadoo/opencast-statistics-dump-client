@@ -1,0 +1,19 @@
+{
+    "description": "3. Fortlaufende monatliche Statistik mehrerer Serien mit Zahlen pro Episode (Treffpunkt Science City). Alternativ könnte die neue Funktion über die REST API einen Filter auf dcterms:title und dcterms:subject (Serie und Episoden) entgegennehmen, um alle Serien/Episoden z. B. des «Treffpunkt Science City» für einen definierten Zeitraum statistisch zu erfassen.",
+    "limit": "10",
+    "sleep": "0.5",
+    "fileprefix": "fall3",
+    "host": "localhost",
+    "port": "8080",
+    "user": "admin",
+    "password": "opencast",
+    "organization": "mh_default_org",
+    "resourceId": "mh_default_org",
+    "detailLevel": "EPISODE",
+    "from": "2018-12-31T23:00:00.000Z",
+    "to": "2019-12-31T22:59:59.999Z",
+    "dataResolution": "MONTHLY",
+    "identifier": "organization.views.sum.influx",
+    "resourceType": "organization",
+    "filter": "title:Treffpunkt Science City"
+}

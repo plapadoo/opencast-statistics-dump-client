@@ -1,0 +1,19 @@
+{
+    "description": "2. Mehrjährige Statistiken einer Serie ohne Zahlen für die Episoden (Einführungs- und Abschiedsvorlesungen)",
+    "limit": "10",
+    "sleep": "0.5",
+    "fileprefix": "fall2",
+    "host": "localhost",
+    "port": "8080",
+    "user": "admin",
+    "password": "opencast",
+    "organization": "mh_default_org",
+    "resourceId": "1c760d9a-26ce-48ad-b93e-cdda15ac5a5d",
+    "detailLevel": "SERIES",
+    "from": "2018-12-31T23:00:00.000Z",
+    "to": "2022-12-31T22:59:59.999Z",
+    "dataResolution": "YEARLY",
+    "identifier": "series.views.sum.influx",
+    "resourceType": "series",
+    "filter": ""
+}

@@ -1,0 +1,19 @@
+{
+    "description": "5. Sonstiges: Statistiken aller Serien/Episoden einer Person / eines Departements. Hier wäre ein Filter auf dcterms:creator (Serie/Episode) und dcterms:contributor (Serie/Episode) sinnvoll. Sehr spezifisch für die ETH wäre noch ein Filter, der in den erweiterten Metadaten einen Filter in «VP URL 1» ermöglicht. Das ist die URL, unter der die Serien bzw. Episoden publiziert werden und mittels eines Filters «https://video.ethz.ch/lectures» könnte ich z. B. alle Vorlesungsaufzeichnungen oder alle Videos eines Departementes (https://video.ethz.ch/lectures/d-arch» aussortieren. Beispiel episoden von creator.",
+    "limit": "10",
+    "sleep": "0.5",
+    "fileprefix": "fall6",
+    "host": "localhost",
+    "port": "8080",
+    "user": "admin",
+    "password": "opencast",
+    "organization": "mh_default_org",
+    "resourceId": "mh_default_org",
+    "detailLevel": "EPISODE",
+    "from": "2018-12-31T23:00:00.000Z",
+    "to": "2019-12-31T22:59:59.999Z",
+    "dataResolution": "YEARLY",
+    "identifier": "organization.views.sum.influx",
+    "resourceType": "organization",
+    "filter": "creator:Hans Dampf"
+}
