@@ -102,7 +102,7 @@ def main():
         else:
             write_page(cfg, page, offset)
             offset = offset + int(cfg['limit'])
-        time.sleep(int(cfg['sleep']))
+        time.sleep(float(cfg['sleep']))
     merge_pages(cfg)
 
 if __name__ == "__main__":

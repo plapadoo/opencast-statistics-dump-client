@@ -1,6 +1,6 @@
 {
     "limit": "1",
-    "sleep": "1",
+    "sleep": "0.5",
     "fileprefix": "fall1",
     "host": "localhost",
     "port": "8080",
