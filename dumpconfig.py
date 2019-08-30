@@ -1,7 +1,7 @@
 """1. Jaehrliche Statistik einer Serie mit Zahlen pro Episode (Brueckenkurs)"""
 
 APP = {
-    'limit': '2',
+    'limit': '1',
     'sleep': '1',
     'fileprefix': 'fall1',
     }

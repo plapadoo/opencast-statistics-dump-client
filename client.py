@@ -71,7 +71,7 @@ def merge_pages():
             part_file = open(path, "r")
             complete_file.write(part_file.read())
             part_file.close()
-            offset = offset + 1
+            offset = offset + int(cfg.APP['limit'])
         else:
             complete_file.close()
             reading = False
@@ -79,6 +79,11 @@ def merge_pages():
 
 def main():
     """Reads pages from endpoint until no more data is received."""
+
+    if int(cfg.APP['limit']) == 0:
+        print('Limit 0 is not allowed')
+        sys.exit(1)
+
     reading = True
     offset = 0
     while reading:
@@ -88,7 +93,7 @@ def main():
             reading = False
         else:
             write_page(page, offset)
-            offset = offset + 1
+            offset = offset + int(cfg.APP['limit'])
         time.sleep(int(cfg.APP['sleep']))
     merge_pages()
 
