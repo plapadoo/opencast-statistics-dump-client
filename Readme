@@ -1,0 +1,5 @@
+- one json config files for each usecase
+- each json config files holds all necessary config for a statistics data dump
+- run like this: python2 client.py config.json
+- limit=0 is not allowed
+- set sleep in (fractions of a) seconds to wait between requests as not to impact opencast performance
