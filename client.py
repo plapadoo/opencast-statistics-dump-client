@@ -3,18 +3,16 @@
 """Fetches a opencast statistics dump in a robust way and saves result as csv file."""
 
 import sys
-import csv
 import json
-from StringIO import StringIO
+import os.path
 import requests
 import dumpconfig as cfg
 
 URL = 'http://%s:%s/api/statistics/data/export.csv' % (cfg.OPENCAST['host'], cfg.OPENCAST['port'])
 AUTH = (cfg.OPENCAST['user'], cfg.OPENCAST['password'])
 
-def get_csv_reader(offset):
-    """Return a csv reader object which will iterate over lines in the fetched
-    opencast csv statistics dump."""
+def get_csv_data(offset):
+    """Return one page of csv data fetched from opencast csv statistics dump."""
     data = {
         'offset': offset,
         'filter': '',
@@ -41,22 +39,28 @@ def get_csv_reader(offset):
             print 'This can mean your credentials are incorrect.'
             print 'This can mean the resourceID configured could not be found.'
         sys.exit(1)
-    csvstring = json.loads(response.text)['csv']
-    return csv.reader(StringIO(csvstring), delimiter=',')
+    return json.loads(response.text)['csv']
+
+def write_page(page, offset):
+    """Write page of csv data to file."""
+    path = 'part-%s-limit-%d-offset-%d.csv' % (cfg.APP['fileprefix'], int(cfg.APP['limit']), offset)
+    os.path.exists
+    print 'Writing to %s.' % (path)
+    part_file = open(path, "w")
+    part_file.write(page)
+    part_file.close()
 
 def main():
     """Reads pages from endpoint until no more data is received."""
     reading = True
     offset = 0
     while reading:
-        reader = get_csv_reader(offset)
-        for row in reader:
-            '\t'.join(row)
-        print '%d lines read while parsing.' % (reader.line_num)
-        if reader.line_num == 0:
+        page = get_csv_data(offset)
+        if not page:
             print 'End of dump.'
             reading = False
         else:
+            write_page(page, offset)
             offset = offset + 1
 
 if __name__ == "__main__":
