@@ -15,5 +15,5 @@
     "dataResolution": "YEARLY",
     "identifier": "organization.views.sum.influx",
     "resourceType": "organization",
-    "filter": "creator:Hans Dampf"
+    "filter": "presenters:Hans Dampf"
 }
